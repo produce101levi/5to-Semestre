@@ -6,4 +6,9 @@ describe("User Model Test", () => {
         const user = new userModel({username: "John Doe", age: 20});
         expect(user.isAdult()).toBeTruthy();
     })
+
+    it("should be able to return whether the user is not an adult", () => {
+        const user = new userModel({username: "John Doe", age: 16});
+        expect(user.isAdult()).toBeFalsy();
+    })
 })
