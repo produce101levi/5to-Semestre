@@ -3,7 +3,7 @@ const TodoModel = require("../../models/todo_model");
 
 
 const httpMocks = require("node-mocks-http");
-const newTask = require("../mockups/todo_mockup.json");
+const newTask = require("../../mockups/todo_mockup.json");
 
 TodoModel.create = jest.fn();
 
@@ -18,10 +18,16 @@ describe("Test Create method exists", () => {
     it("should have a create method", () => {
         expect(typeof TodoController.todoCreate).toBe("function");
     });
-    
+
     it("should call todoModel.create", () => {
-        req.body = newTodo;
+        req.body = newTask;
         TodoController.todoCreate(req, res, next);
-        expect(TodoModel.create).toBeCalledWith(newTodo);
-    });
+        expect(TodoModel.create).toBeCalledWith(newTask);
+    })
+
+    it("should return 201 status code", () => {
+        req.body = newTask;
+        TodoController.todoCreate(req, res, next);
+        expect(res.statusCode).toBe(201);
+    })
 })
