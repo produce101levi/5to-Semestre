@@ -4,3 +4,5 @@ const TodoModel = require("../../models/todo_model");
 
 const httpMocks = require("node-mocks-http");
 const newTask = require("../mockups/todo_mockup.json");
+
+TodoModel.create = jest.fn();
