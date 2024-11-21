@@ -13,7 +13,7 @@ struct PracticeTestApp: App {
     @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel: PaymentViewModel.shared)
         }
     }
 }
